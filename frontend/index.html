@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>StudySpark AI Pro — Study Smarter with AI</title>
+<meta name="description" content="Turn any topic into beautifully structured, exam-ready study notes — powered by Gemini AI." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ============ BACKGROUND ============ -->
+<div class="bg-mesh" aria-hidden="true">
+  <div class="mesh-blob blob-1"></div>
+  <div class="mesh-blob blob-2"></div>
+  <div class="mesh-blob blob-3"></div>
+  <div class="grain"></div>
+</div>
+
+<!-- ============ TOP NAVIGATION ============ -->
+<header class="topnav">
+  <div class="topnav-left">
+    <button class="icon-btn sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+      <svg viewBox="0 0 24 24" width="20" height="20"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+    <div class="logo">
+      <span class="logo-spark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 2 L14.2 9.6 L22 12 L14.2 14.4 L12 22 L9.8 14.4 L2 12 L9.8 9.6 Z" fill="url(#sparkGrad)"/><defs><linearGradient id="sparkGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8B7CFF"/><stop offset="1" stop-color="#4F8DFD"/></linearGradient></defs></svg>
+      </span>
+      <span class="logo-text">StudySpark <span class="logo-pro">AI Pro</span></span>
+    </div>
+  </div>
+
+  <div class="topnav-center">
+    <div class="global-search">
+      <svg viewBox="0 0 24 24" width="16" height="16" class="search-icon"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <input type="text" id="globalSearch" placeholder="Search your notes, topics, history…" autocomplete="off" />
+      <kbd class="search-kbd">/</kbd>
+    </div>
+  </div>
+
+  <div class="topnav-right">
+    <button class="icon-btn" id="darkModeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" width="19" height="19"><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.7" fill="none"/><g stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M12 2v2.4M12 19.6V22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2 12h2.4M19.6 12H22M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"/></g></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" width="19" height="19"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z" fill="currentColor"/></svg>
+    </button>
+    <button class="icon-btn" id="settingsBtn" aria-label="Settings" title="Settings">
+      <svg viewBox="0 0 24 24" width="19" height="19"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.7" fill="none"/><path d="M19.4 13.5a7.9 7.9 0 0 0 .1-1.5 7.9 7.9 0 0 0-.1-1.5l2.1-1.6-2-3.5-2.5 1a7.9 7.9 0 0 0-2.6-1.5L14 2h-4l-.4 2.9a7.9 7.9 0 0 0-2.6 1.5l-2.5-1-2 3.5 2.1 1.6a7.9 7.9 0 0 0-.1 1.5 7.9 7.9 0 0 0 .1 1.5L2.5 15l2 3.5 2.5-1a7.9 7.9 0 0 0 2.6 1.5L10 22h4l.4-2.9a7.9 7.9 0 0 0 2.6-1.5l2.5 1 2-3.5-2.1-1.6Z" stroke="currentColor" stroke-width="1.3" fill="none" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="profile-avatar" id="profileBtn" aria-label="Profile" title="Profile">SS</button>
+  </div>
+</header>
+
+<div class="app-shell">
+
+  <!-- ============ LEFT SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+    <button class="new-chat-btn" id="newChatBtn">
+      <svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      New Topic
+    </button>
+
+    <div class="sidebar-search">
+      <svg viewBox="0 0 24 24" width="14" height="14"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <input type="text" id="historySearch" placeholder="Search history" autocomplete="off" />
+    </div>
+
+    <div class="sidebar-scroll">
+      <div class="sidebar-section" id="pinnedSection">
+        <div class="sidebar-label">📌 Pinned</div>
+        <div class="chat-list" id="pinnedList"></div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">🕓 Recent</div>
+        <div class="chat-list" id="recentList"></div>
+        <p class="empty-hint" id="emptyHistoryHint">Your generated topics will appear here.</p>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <button class="sidebar-footer-btn" id="clearHistoryBtn">
+        <svg viewBox="0 0 24 24" width="14" height="14"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        Clear all history
+      </button>
+    </div>
+  </aside>
+
+  <div class="sidebar-scrim" id="sidebarScrim"></div>
+
+  <!-- ============ MAIN ============ -->
+  <main class="main">
+
+    <!-- HERO (shown when no active note) -->
+    <section class="hero" id="heroSection">
+      <div class="hero-eyebrow">Powered by Gemini · Built for Anna University &amp; beyond</div>
+      <h1 class="hero-title">Study smarter <span class="hero-gradient-text">with AI</span></h1>
+      <p class="hero-sub">Type any topic. Get a complete, exam-ready study pack — summary, diagrams, quiz, viva questions and more — in seconds.</p>
+
+      <div class="hero-chips">
+        <button class="chip" data-topic="Object-Oriented Programming in Java">OOP in Java</button>
+        <button class="chip" data-topic="TCP/IP Networking Model">TCP/IP Model</button>
+        <button class="chip" data-topic="Normalization in DBMS">DBMS Normalization</button>
+        <button class="chip" data-topic="Operating System Process Scheduling">Process Scheduling</button>
+      </div>
+    </section>
+
+    <!-- RESPONSE FEED -->
+    <section class="response-feed" id="responseFeed"></section>
+
+    <!-- LOADING STATE -->
+    <section class="loading-panel" id="loadingPanel" hidden>
+      <div class="loading-spark">
+        <svg viewBox="0 0 24 24" width="34" height="34"><path d="M12 2 L14.2 9.6 L22 12 L14.2 14.4 L12 22 L9.8 14.4 L2 12 L9.8 9.6 Z" fill="url(#loadGrad)"/><defs><linearGradient id="loadGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8B7CFF"/><stop offset="1" stop-color="#4F8DFD"/></linearGradient></defs></svg>
+      </div>
+      <p class="loading-text" id="loadingText">Thinking…</p>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    </section>
+
+    <!-- INPUT DOCK -->
+    <div class="input-dock">
+      <div class="input-card">
+        <textarea id="topicInput" placeholder="Ask about any topic — e.g. “Explain DNS resolution with a real-life example”" rows="1"></textarea>
+        <div class="input-dock-actions">
+          <span class="input-hint" id="charHint">0 / 500</span>
+          <button class="generate-btn" id="generateBtn">
+            <span>Generate</span>
+            <svg viewBox="0 0 24 24" width="16" height="16"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+          </button>
+        </div>
+      </div>
+      <p class="input-footnote">StudySpark can make mistakes. Verify important facts before your exam. </p>
+    </div>
+  </main>
+</div>
+
+<!-- ============ SETTINGS MODAL ============ -->
+<div class="modal-overlay" id="settingsOverlay" style="display:none;">
+  <div class="modal glass-panel" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+    <div class="modal-header">
+      <h2 id="settingsTitle">Settings</h2>
+      <button class="icon-btn" id="closeSettings" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="setting-row">
+        <div>
+          <p class="setting-title">Appearance</p>
+          <p class="setting-desc">Choose how StudySpark looks on this device.</p>
+        </div>
+        <div class="segmented" id="themeSegmented">
+          <button data-theme-choice="light" class="seg-btn">Light</button>
+          <button data-theme-choice="dark" class="seg-btn">Dark</button>
+        </div>
+      </div>
+
+      <div class="setting-row">
+        <div>
+          <p class="setting-title">Font size</p>
+          <p class="setting-desc">Adjust reading comfort for generated notes.</p>
+        </div>
+        <div class="segmented" id="fontSegmented">
+          <button data-font-choice="sm" class="seg-btn">Small</button>
+          <button data-font-choice="md" class="seg-btn">Medium</button>
+          <button data-font-choice="lg" class="seg-btn">Large</button>
+        </div>
+      </div>
+
+      <div class="setting-row">
+        <div>
+          <p class="setting-title">Export history</p>
+          <p class="setting-desc">Download all saved topics as a JSON backup.</p>
+        </div>
+        <button class="pill-btn" id="exportHistoryBtn">Export</button>
+      </div>
+
+      <div class="setting-row">
+        <div>
+          <p class="setting-title">Clear history</p>
+          <p class="setting-desc">Permanently delete every saved topic on this device.</p>
+        </div>
+        <button class="pill-btn pill-danger" id="settingsClearBtn">Clear all</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TOAST ============ -->
+<div class="toast" id="toast"></div>
+
+<!-- ============ CONTEXT MENU (rename/delete/pin) ============ -->
+<div class="context-menu" id="contextMenu" hidden>
+  <button data-action="pin" id="ctxPin">📌 Pin topic</button>
+  <button data-action="rename">✏️ Rename</button>
+  <button data-action="delete" class="ctx-danger">🗑️ Delete</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

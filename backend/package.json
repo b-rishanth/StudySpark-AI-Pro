@@ -1,0 +1,29 @@
+{
+  "name": "studyspark-ai-pro-backend",
+  "version": "1.0.0",
+  "description": "Backend REST API for StudySpark AI Pro — an AI-powered study notes generator using Gemini API.",
+  "main": "server.js",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.19.2",
+    "groq-sdk": "^1.4.0",
+    "openai": "^6.49.0"
+  },
+  "keywords": [
+    "ai",
+    "gemini",
+    "study-notes",
+    "express",
+    "studyspark"
+  ],
+  "license": "MIT"
+}
