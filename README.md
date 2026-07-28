@@ -83,4 +83,7 @@ Works on:
 
 # 🏗️ System Architecture
 
-
+GROQ API
+llama-3.3-70b-versatile
+AWS ECS
+Docker
