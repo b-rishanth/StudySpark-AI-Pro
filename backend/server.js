@@ -125,7 +125,9 @@ app.post('/api/generate', rateLimit, async (req, res) => {
     }
 
     if (topic.length > 500) {
-      return res.status(400).json({ message: 'Topic is too long. Please keep it under 500 characters.' });
+      return res.status(400).json({
+        message: 'Topic is too long. Please keep it under 500 characters.'
+      });
     }
 
     if (!GROQ_API_KEY) {
@@ -162,14 +164,16 @@ app.post('/api/generate', rateLimit, async (req, res) => {
     });
 
   } catch (err) {
-    console.error('Unexpected error in /api/generate:', err);
+    console.error("========== FULL ERROR ==========");
+    console.error(err);
+    console.error("===============================");
 
     res.status(500).json({
-      message: 'Something went wrong on our end. Please try again shortly.'
+      message: err.message,
+      stack: err.stack
     });
   }
 });
-
 
 app.get('/api/health', (_req, res) => {
   res.json({

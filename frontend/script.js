@@ -9,7 +9,7 @@
   'use strict';
 
   /* ----------------------------- Config ----------------------------- */
-  const API_ENDPOINT = 'http://localhost:8080/api/generate';
+  const API_ENDPOINT = 'https://st-97429f0d16bd478ba9c66c5a2b1a562b.ecs.ap-south-1.on.aws/api/generate';
   const STORAGE_KEYS = {
     history: 'studyspark_history_v1',
     theme: 'studyspark_theme',
